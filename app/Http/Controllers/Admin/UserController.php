@@ -20,14 +20,13 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return view('admin.users.index');
+        return redirect()->route('admin.user.index')->with('message', 'User Successfuly Created');
     }
     public function edit(string $id)
     {
@@ -42,12 +41,12 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
-        return redirect()->back();
+        return redirect()->route('admin.user.index')->with('message', 'User Successfuly Updated');
     }
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.user.index')->with('message', 'User Successfuly Deleted');
     }
 }

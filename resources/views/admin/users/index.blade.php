@@ -10,6 +10,9 @@
                         <input type="text" class="form-control text-left" dir="rtl" wire:model="search">
                     </div>
                 </div>
+                @if (session()->has('message'))
+                    <p>{{ session('message') }}</p>
+                @endif
                 <table class="table table-striped table-hover">
                     <thead class="thead-light">
                         <tr>
