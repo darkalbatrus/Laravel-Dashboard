@@ -49,4 +49,21 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('admin.user.index')->with('message', 'User Successfuly Deleted');
     }
+    public function deleted()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('admin.users.deleted_user', compact('users'));
+    }
+    public function restore($id)
+    {
+        $user = User::onlyTrashed()->find($id);
+        $user->restore();
+        return redirect()->route('admin.user.index')->with('message', 'User Successfuly Restored');
+    }
+    public function forceDelete($id)
+    {
+        $user = User::onlyTrashed()->find($id);
+        $user->forceDelete();
+        return redirect()->route('admin.user.index')->with('message', 'User Successfuly ForceDeleted');
+    }
 }

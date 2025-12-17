@@ -27,6 +27,7 @@
                     <ul>
                         <li><a href="{{ route('admin.user.create') }}">ایجاد کاربر</a></li>
                         <li><a href="{{ route('admin.user.index') }}">لیست کاربران</a></li>
+                        <li><a href="{{ route('admin.user.deleted') }}">کاربران حذف شده</a></li>
                     </ul>
                 </li>
             </ul>

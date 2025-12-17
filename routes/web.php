@@ -14,4 +14,7 @@ Route::prefix("admin")->group(function () {
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
     Route::put('/user/update/{id}', [UserController::class, 'update'])->name('admin.user.update');
     Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
+    Route::get('/user/deleted', [UserController::class, 'deleted'])->name('admin.user.deleted');
+    Route::put('/user/restore/{id}', [UserController::class, 'restore'])->name('admin.user.restore');
+    Route::get('/user/forceDelete', [UserController::class, 'forceDelete'])->name('admin.user.forceDelete');
 });
