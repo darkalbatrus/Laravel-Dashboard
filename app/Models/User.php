@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\enums\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use SebastianBergmann\CodeCoverage\Node\Builder;
 
 class User extends Authenticatable
 {
@@ -46,5 +49,19 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    protected function scopeUserStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    protected static function boot()
+    {
+        return parent::boot();
+        static::addGlobalScope('status', function (Builder $builder) {
+            $builder->where('status', UserStatus::Active->value)
+                ->where('email_verified_at', '!=', null);
+        });
     }
 }

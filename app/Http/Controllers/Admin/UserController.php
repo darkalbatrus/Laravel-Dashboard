@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::query()->userStatus(UserStatus::Active->value)->get();
         return view('admin.users.index', compact('users'));
     }
     public function create()
