@@ -74,6 +74,11 @@ class User extends Authenticatable
         return $this->name . ' ' . $this->family;
     }
 
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+
     protected function scopeUserStatus($query, $status)
     {
         return $query->where('status', $status);

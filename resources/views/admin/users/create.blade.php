@@ -8,22 +8,40 @@
                 <form method="POST" action="{{ route('admin.user.store') }}">
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">نام و نام خانوادگی</label>
+                        <label class="col-sm-2 col-form-label">نام</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control text-left" dir="rtl" name="name">
                         </div>
+                        @error('name')
+                            <p>{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">نام خانوادگی</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control text-left" dir="rtl" name="family">
+                        </div>
+                        @error('family')
+                            <p>{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">ایمیل</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control text-left" dir="rtl" name="email">
                         </div>
+                        @error('email')
+                            <p>{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">پسورد</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control text-left" dir="rtl" name="password">
                         </div>
+                        @error('password')
+                            <p>{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <button type="submit" class="btn btn-success btn-uppercase">
