@@ -23,6 +23,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'family',
         'email',
         'password',
         'status'
@@ -51,17 +52,39 @@ class User extends Authenticatable
         ];
     }
 
+    public function getUserStatusAttribute()
+    {
+        switch ($this->status) {
+            case UserStatus::Active->value:
+                return 'فعال';
+                break;
+            case UserStatus::InActive->value:
+                return 'غیرفعال';
+                break;
+            case UserStatus::Banned->value:
+                return  'بن شده';
+                break;
+            default:
+                'هیچکدام';
+        }
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->family;
+    }
+
     protected function scopeUserStatus($query, $status)
     {
         return $query->where('status', $status);
     }
 
-    protected static function boot()
-    {
-        return parent::boot();
-        static::addGlobalScope('status', function (Builder $builder) {
-            $builder->where('status', UserStatus::Active->value)
-                ->where('email_verified_at', '!=', null);
-        });
-    }
+    // protected static function boot()
+    // {
+    //     return parent::boot();
+    //     static::addGlobalScope('status', function (Builder $builder) {
+    //         $builder->where('status', UserStatus::Active->value)
+    //             ->where('email_verified_at', '!=', null);
+    //     });
+    // }
 }

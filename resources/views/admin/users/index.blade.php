@@ -20,6 +20,7 @@
                             <th class="text-center align-middle text-primary">نام و نام خانوادگی</th>
                             <th class="text-center align-middle text-primary">ایمیل</th>
                             <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
+                            <th class="text-center align-middle text-primary">وضعیت</th>
                             <th class="text-center align-middle text-primary">ویرایش</th>
                             <th class="text-center align-middle text-primary">حذف</th>
                         </tr>
@@ -28,7 +29,7 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td class="text-center align-middle">{{ $user->id }}</td>
-                                <td class="text-center align-middle">{{ $user->name }}</td>
+                                <td class="text-center align-middle">{{ $user->full_name }}</td>
                                 {{-- <td class="text-center align-middle">
                                 <figure class="avatar avatar">
                                     <img src="" class="rounded-circle" alt="image">
@@ -36,6 +37,7 @@
                             </td> --}}
                                 <td class="text-center align-middle">{{ $user->email }}</td>
                                 <td class="text-center align-middle">{{ $user->created_at }}</td>
+                                <td class="text-center align-middle">{{ $user->user_status }}</td>
                                 {{-- <td class="text-center align-middle"></td>
                             <td class="text-center align-middle">
                                 <a class="btn btn-outline-info" href="#">
