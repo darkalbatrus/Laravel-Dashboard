@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\enums\UserStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +20,14 @@ class UserController extends Controller
     {
         return view('admin.users.create');
     }
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
+        // $request->validate([
+        //     'name' => 'required|string|min:3|max:255',
+        //     'family' => 'required|string|min:3|max:255',
+        //     'email' => 'required|email|unique:user,email',
+        //     'password' => 'required|min:6|max:255',
+        // ]);
         User::create([
             'name' => $request->name,
             'family' => $request->family,
