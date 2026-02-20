@@ -32,6 +32,7 @@ class UserController extends Controller
             'name' => $request->name,
             'family' => $request->family,
             'email' => $request->email,
+            'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
         ]);
 
@@ -47,7 +48,9 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update([
             'name' => $request->name,
+            'family' => $request->family,
             'email' => $request->email,
+            'mobile' => $request->mobile,
             'password' => $request->password ? Hash::make($request->password) : $user->password,
         ]);
         return redirect()->route('admin.user.index')->with('message', 'User Successfuly Updated');

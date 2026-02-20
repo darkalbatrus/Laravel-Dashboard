@@ -19,6 +19,7 @@
                             <th class="text-center align-middle text-primary">ردیف</th>
                             <th class="text-center align-middle text-primary">نام و نام خانوادگی</th>
                             <th class="text-center align-middle text-primary">ایمیل</th>
+                            <th class="text-center align-middle text-primary">شماره تماس</th>
                             <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
                             <th class="text-center align-middle text-primary">وضعیت</th>
                             <th class="text-center align-middle text-primary">ویرایش</th>
@@ -36,6 +37,7 @@
                                 </figure>
                             </td> --}}
                                 <td class="text-center align-middle">{{ $user->email }}</td>
+                                <td class="text-center align-middle">{{ $user->mobile }}</td>
                                 <td class="text-center align-middle">{{ $user->created_at }}</td>
                                 <td class="text-center align-middle">{{ $user->user_status }}</td>
                                 {{-- <td class="text-center align-middle"></td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PersianPhoneRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -24,7 +25,8 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:255',
             'family' => 'required|string|min:3|max:255',
-            'email' => 'required|email|unique:user,email',
+            'email' => 'required|email|unique:users,email',
+            'mobile' => [new PersianPhoneRule()],
             'password' => 'required|min:6|max:255',
         ];
     }
