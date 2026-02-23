@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::query()->userStatus(UserStatus::Active->value)->get();
+        $users = User::all();
         return view('admin.users.index', compact('users'));
     }
     public function create()

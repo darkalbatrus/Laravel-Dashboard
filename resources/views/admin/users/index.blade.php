@@ -39,7 +39,12 @@
                                 <td class="text-center align-middle">{{ $user->email }}</td>
                                 <td class="text-center align-middle">{{ $user->mobile }}</td>
                                 <td class="text-center align-middle">{{ $user->created_at }}</td>
-                                <td class="text-center align-middle">{{ $user->user_status }}</td>
+                                <td @class([
+                                    'text-center align-middle',
+                                    'text-success' => $user->status == \App\Enums\UserStatus::Active->value,
+                                    'text-danger' => $user->status == \App\Enums\UserStatus::InActive->value,
+                                ])>{{ $user->user_status }}
+                                </td>
                                 {{-- <td class="text-center align-middle"></td>
                             <td class="text-center align-middle">
                                 <a class="btn btn-outline-info" href="#">
